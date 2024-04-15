@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>House Price Prediction</title>
+  <style>
+    body {
+      font-family: 'Arimo', sans-serif;
+      background: url('https://i.iheart.com/v3/re/assets.getty/5f90b36485fe21e085ff30f7?ops=gravity(%22north%22),fit(1200,675),quality(65)') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .login {
+      width: 400px;
+      margin: 100px auto;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      color: #4CAF50;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      margin-top: 20px;
+    }
+
+    .social-icons img {
+      width: 30px;
+      margin: 0 10px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Portfolio</a>
+    <a href="#">Contact</a>
+  </div>
+  <div class="login">
+    <h1>House Price Prediction</h1>
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+      <label for="MedInc">Median Income:</label><br>
+      <input type="text" id="MedInc" name="MedInc" placeholder="Enter Median Income" required="required" /><br>
+
+      <label for="HouseAge">House Age:</label><br>
+      <input type="text" id="HouseAge" name="HouseAge" placeholder="Enter House Age" required="required" /><br>
+
+      <label for="AveRooms">Average Rooms:</label><br>
+      <input type="text" id="AveRooms" name="AveRooms" placeholder="Enter Average Rooms" required="required" /><br>
+
+      <label for="AveBedrms">Average Bedrooms:</label><br>
+      <input type="text" id="AveBedrms" name="AveBedrms" placeholder="Enter Average Bedrooms" required="required" /><br>
+
+      <label for="Population">Population:</label><br>
+      <input type="text" id="Population" name="Population" placeholder="Enter Population" required="required" /><br>
+
+      <label for="AveOccup">Average Occupancy:</label><br>
+      <input type="text" id="AveOccup" name="AveOccup" placeholder="Enter Average Occupancy" required="required" /><br>
+
+      <label for="Latitude">Latitude:</label><br>
+      <input type="text" id="Latitude" name="Latitude" placeholder="Enter Latitude" required="required" /><br>
+
+      <label for="Longitude">Longitude:</label><br>
+      <input type="text" id="Longitude" name="Longitude" placeholder="Enter Longitude" required="required" /><br>
+
+      <button type="submit">Predict</button>
+    </form>
+
+    <br>
+    <br>
+    {% if prediction_text %}
+    <h2>{{ prediction_text }}</h2>
+    {% endif %}
+  </div>
+  <div class="footer">
+    <div class="social-icons">
+      <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/2048px-Facebook_icon.svg.png" alt="Facebook"></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3938/3938028.png" alt="Twitter"></a>
+      <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/600px-Instagram_icon.png" alt="Instagram"></a>
+    </div>
+    <p>&copy; 2024 House Price Prediction</p>
+  </div>
+</body>
+
+</html>
